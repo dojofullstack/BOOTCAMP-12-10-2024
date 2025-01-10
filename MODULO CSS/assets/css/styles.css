@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Goldman:wght@400;700&family=Nova+Mono&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+
+* {
+    font-family: "Nunito", serif;
+}
+
+/* h1 {
+    font-family: "Bebas Neue", serif;
+}
+
+h2 {
+    font-family: "Bebas Neue", serif;
+}
+
+h3 {
+    font-family: "Bebas Neue", serif;
+} */
+
+h1, h2, h3 {
+    font-family: "Bebas Neue", serif;
+}
+
+
+
+
+body {
+    margin: 0;
+}
+
+
+#add-like {
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 20px;
+    background-color: purple;
+    color: white;
+}
+
+
+.btn-primary {
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 17px;
+    background-color: orange;
+    color: black;
+}
+
+
+#add-like, .btn-primary, button {
+    border: none;
+    margin: 5px;
+    cursor: pointer;
+    color: gray;
+}
+
+
+
+button.btn-primary {
+    border: 3px solid black;
+}
+
+
+
+div.container div.container-hijo > button.btn-primary {
+    border: 3px solid blue;
+}
+
+
+
+.fruta:nth-child(3) {
+    color: aqua;
+    font-weight: bold;
+}
+
+
+.fruta:nth-child(1) {
+    color: brown;
+    font-weight: bold;
+}
