@@ -1,0 +1,73 @@
+
+
+
+.container-position {
+    position: relative;
+    left: 50px;
+    top: 100px;
+    background-color: aquamarine;
+    width: 500px;
+    height: 300px;
+    z-index: 0;
+}
+
+
+.btn-comprar {
+    position: absolute;
+    right: 30px;
+    top: 50px;
+}
+
+
+.estrella {
+    height: 30px;
+    position: absolute;
+    left: 34px;
+    top: 55px;
+}
+
+.estrella-1 {
+    height: 30px;
+    position: absolute;
+    left: 44px;
+    bottom: 55px;
+}
+
+.estrella-2 {
+    height: 30px;
+    position: absolute;
+    right: 54px;
+    top: 65px;
+}
+
+.estrella-3 {
+    height: 30px;
+    position: absolute;
+    right: 94px;
+    top: 15px;
+}
+
+.estrella-4 {
+    height: 30px;
+    position: absolute;
+    right: 34px;
+    bottom: 35px;
+}
+
+
+.img-center {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+
+.estrella-centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 90px;
+    transform: translate(-50%,-50%);
+}

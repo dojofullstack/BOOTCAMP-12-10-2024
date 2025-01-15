@@ -1,0 +1,63 @@
+
+
+.btn-like {
+    padding: 10px 20px;
+    background-color: rgb(189, 109, 123);
+}
+
+
+.btn-like:hover {
+    background-color: tomato;
+    font-size: 20px;
+    zoom: 1.1;
+}
+
+
+.btn-add-car {
+    padding: 10px 20px;
+    background-color: rgb(95, 197, 102);
+}
+
+.btn-add-car:active {
+    background-color: rgb(13, 94, 18);
+    font-size: 20px;
+    zoom: 1.1;
+    color: white;
+}
+
+.tiktok:active {
+    background-color: yellow;
+}
+
+
+.form-custom:focus {
+    padding: 10px;
+    font-size: 20px;
+    border: 3px solid greenyellow;
+    font-style: italic;
+    background-color: beige;
+}
+
+
+
+.fruta:nth-child(1) {
+    background-color: orange;
+}
+
+
+.fruta:nth-child(2) {
+    background-color: green;
+    color: white;
+}
+
+.fruta:first-child {
+    padding:30px;
+    color: purple;
+}
+
+
+.fruta:last-child {
+    padding:30px;
+    color: purple;
+    background-color: skyblue;
+}
