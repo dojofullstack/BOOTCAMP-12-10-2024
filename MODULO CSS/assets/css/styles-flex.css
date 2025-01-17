@@ -1,0 +1,14 @@
+
+
+.container-flex {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.item-flex {
+    background-color: aqua;
+}

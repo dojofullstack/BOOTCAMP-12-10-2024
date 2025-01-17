@@ -1,0 +1,56 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+.container-tweet {
+    background-color: rgb(43, 40, 40);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+    padding: 20px 50px;
+    border-radius: 20px;
+
+}
+
+
+section {
+    margin: 0;
+}
+
+
+.profile {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+/* .logo {
+    margin-left: auto;
+} */
+
+.container-logo {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    margin: 10px;
+}
+
+.avatar {
+    border-radius: 50%;
+}
+
+.bi.bi-patch-check-fill {
+    color: skyblue;
+} 
+
+
+.p-body {
+    margin: 8px 0;
+}
+
+
+.icons-tweet {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
