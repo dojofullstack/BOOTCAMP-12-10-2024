@@ -1,0 +1,7 @@
+
+
+
+.catalogo-product {
+    display: flex;
+    flex-wrap: wrap;
+}
