@@ -1,0 +1,48 @@
+
+
+.banner {
+    height: 300px;
+    width: 100%;
+    background-color: brown;
+}
+
+.catalogo {
+    display: flex;
+    gap: 10px;
+}
+
+.item {
+    background-color: purple;
+    padding: 10px;
+}
+
+
+
+/* detectar pantallas pequenas  */
+@media (max-width: 500px) {
+    
+    .banner {
+        background-image: url(https://www.nike.com.pe/dw/image/v2/BJKZ_PRD/on/demandware.static/-/Library-Sites-NikePeruSharedLibrary/default/dw4e3bf63f/Landings/Homepage/Imagenes/p0-nike-sale-mobile-01-2025.jpg);
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+
+    .catalogo {
+        flex-direction: column;
+    }
+
+}
+
+
+
+/* detectar pantallas grandes  */
+@media (min-width: 500px) {
+    
+    .banner {
+        background-image: url(https://unicosmoderna.com/cdn/shop/collections/BANNER-NIKE-HOMBRE.jpg?v=1696032904&width=2048);
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+}
