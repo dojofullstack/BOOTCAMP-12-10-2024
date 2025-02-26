@@ -1,0 +1,8 @@
+
+
+- Estrucutra de datos (Condciones, simples, anidadas, iteradores, forEach, map, forOff)
+- Funcinones, callbacks.
+- JSON.
+- Almacenamiento en el Brower.
+- Paquetes y Librerias.
+- POO
