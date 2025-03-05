@@ -49,3 +49,12 @@ console.log(!isLoginUser);
 // ;
 
 // console.log(isAdmin && isPlanPremimum || isUserVip && !isLoginUser);
+
+
+
+
+// operadores de comparacion
+// ===
+// !==
+// <=
+// >=

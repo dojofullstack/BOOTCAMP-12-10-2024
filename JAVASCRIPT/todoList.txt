@@ -5,4 +5,4 @@
 - JSON.
 - Almacenamiento en el Brower.
 - Paquetes y Librerias.
-- POO
+- POO & asincronia
