@@ -1,0 +1,8 @@
+{
+  "color": "green",
+  "precio": 999,
+  "modelo": "tesla",
+  "isNew": true,
+  "pasajeros": ["michell", "pedro", "henry"],
+  "customAuto": { "aro": "20p", "colorChazis": "purpura" }
+}

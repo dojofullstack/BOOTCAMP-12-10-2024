@@ -3,6 +3,13 @@
 - Estrucutra de datos (Condciones, simples, anidadas, iteradores, forEach, map, forOff)
 - Funcinones, callbacks.
 - JSON.
+
+ JSON.parse()
+ JSON.strinfy()
+
+
+- DESARROLLAR UNA TIENDA VIRTUAL
+- Paquetes y Librerias. 
+
 - Almacenamiento en el Brower.
-- Paquetes y Librerias.
 - POO & asincronia
