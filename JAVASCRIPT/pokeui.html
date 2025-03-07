@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <div class="flex space-x-4">
+                <a href="#" class="text-gray-600 hover:text-gray-900">Inicio</a>
+                <a href="#" class="text-red-500 font-bold">Pokédex</a>
+                <a href="#" class="text-gray-600 hover:text-gray-900">Aplicaciones</a>
+                <a href="#" class="text-gray-600 hover:text-gray-900">Juego de Cartas</a>
+                <a href="#" class="text-gray-600 hover:text-gray-900">Dibujos animados</a>
+                <a href="#" class="text-gray-600 hover:text-gray-900">Eventos de Play!</a>
+                <a href="#" class="text-gray-600 hover:text-gray-900">Noticias</a>
+            </div>
+            <button class="bg-green-500 text-white px-4 py-2 rounded">Iniciar sesión</button>
+        </div>
+    </nav>
+
+    <!-- Search Section -->
+    <div class="bg-gray-800 p-8">
+        <h2 class="text-white text-xl mb-4">Pokédex</h2>
+        <div class="flex items-center space-x-4">
+            <input type="text" placeholder="Nombre o número" class="px-4 py-2 rounded w-full max-w-xs">
+            <button class="bg-orange-500 text-white px-4 py-2 rounded">🔍</button>
+            <button class="bg-green-500 text-white px-4 py-2 rounded">Busca un Pokémon</button>
+        </div>
+        <p class="text-white mt-2">¡Usa la búsqueda avanzada para encontrar Pokémon por su tipo, debilidad, habilidad y demás datos!</p>
+    </div>
+
+    <!-- Content Section -->
+    <div class="container mx-auto mt-8">
+        <div class="flex justify-between items-center mb-4">
+            <button class="bg-blue-500 text-white px-4 py-2 rounded">¡Sorpréndeme!</button>
+            <div class="flex items-center space-x-2">
+                <span>Ordenar por</span>
+                <select class="px-4 py-2 rounded border">
+                    <option>Número inferior</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Pokemon Cards -->
+        <div class="grid grid-cols-3 gap-4">
+            <div class="bg-white p-4 shadow rounded">
+                <img src="https://placehold.co/150x150" alt="Bulbasaur" class="mx-auto">
+                <h3 class="text-center mt-2 font-semibold">Bulbasaur</h3>
+                <p class="text-center text-green-600">Planta</p>
+            </div>
+            <div class="bg-white p-4 shadow rounded">
+                <img src="https://placehold.co/150x150" alt="Ivysaur" class="mx-auto">
+                <h3 class="text-center mt-2 font-semibold">Ivysaur</h3>
+                <p class="text-center text-green-600">Planta</p>
+            </div>
+            <div class="bg-white p-4 shadow rounded">
+                <img src="https://placehold.co/150x150" alt="Charmander" class="mx-auto">
+                <h3 class="text-center mt-2 font-semibold">Charmander</h3>
+                <p class="text-center text-red-600">Fuego</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
