@@ -7,9 +7,14 @@
  JSON.parse()
  JSON.strinfy()
 
-
-- DESARROLLAR UNA TIENDA VIRTUAL
+- iteradores forEach & map.
 - Paquetes y Librerias. 
 
+-----------------------------
+
+
+
+- Axios, chartJS, otros.
+- DESARROLLAR UNA TIENDA VIRTUAL.
 - Almacenamiento en el Brower.
-- POO & asincronia
+- POO & asincronia.
