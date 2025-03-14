@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
 
-    </script>
-    
+
+
+
 </head>
 <body>
 
@@ -16,6 +18,13 @@
     <h1>
         Hello World JS!!!
     </h1>
+
+
+        <div>
+             <canvas id="myChart"></canvas>
+         </div>
+
+      
 
 
     <main>
@@ -52,6 +61,27 @@
             </p> -->
 
         </div>
+
+
+        <form onsubmit="login(event)">
+            <h2>INiciar Sesion</h2>
+            
+            <label for="">User:</label>
+            <input type="text" placeholder="Ingresa Username" name="username" id="username">
+            <br>
+
+            <label for="">Password:</label>
+            <input type="password" placeholder="Ingresar Password" name="pwd" id="pwd">
+
+            <input type="submit" value="Login">
+        </form>
+
+
+        <div id="quotes">
+
+        </div>
+
+
        
 
     </main>
@@ -73,8 +103,16 @@
     <!-- <script src="estructura-datos/funciones.js"></script>  -->
     <!-- <script src="estructura-datos/tipos_funciones.js"></script>  -->
     <!-- <script src="estructura-datos/json.js"></script>  -->
-    <script src="estructura-datos/iteradores-callback.js"></script> 
+    <!-- <script src="estructura-datos/iteradores-callback.js"></script>  -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/openai@4.87.3/index.min.js"></script>
+
     
+    <script src="estructura-datos/modules.js"></script> 
     
+
 </body>
 </html>

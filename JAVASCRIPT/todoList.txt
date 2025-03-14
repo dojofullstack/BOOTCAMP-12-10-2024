@@ -12,9 +12,11 @@
 
 -----------------------------
 
+- npm
+- Axios, chartJS, OpenAI, modelados 3D.
+- OpenAI
 
 
-- Axios, chartJS, otros.
 - DESARROLLAR UNA TIENDA VIRTUAL.
 - Almacenamiento en el Brower.
 - POO & asincronia.

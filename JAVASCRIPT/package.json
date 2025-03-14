@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "paypal": "^1.0.1",
+    "stripe": "^17.7.0"
+  }
+}
