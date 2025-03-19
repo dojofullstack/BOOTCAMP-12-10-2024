@@ -10,13 +10,25 @@
 - iteradores forEach & map.
 - Paquetes y Librerias. 
 
------------------------------
 
+---------------
 - npm
 - Axios, chartJS, OpenAI, modelados 3D.
 - OpenAI
+-----------------------------
 
 
 - DESARROLLAR UNA TIENDA VIRTUAL.
 - Almacenamiento en el Brower.
 - POO & asincronia.
+
+
+----------------
+
+- Taildwindcss y plugin DaisyUI
+- Los componentes & integrar CRUD PRODUCT
+- catalogo de productos
+- Crear productos
+- Dtalle del producto
+- Eliminar productos
+- Actualizar
