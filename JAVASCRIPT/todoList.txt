@@ -30,5 +30,10 @@
 - catalogo de productos
 - Crear productos
 - Dtalle del producto
+- - Actualizar
+---------------------------------
+
+
+
 - Eliminar productos
-- Actualizar
+- Authe. User (Login / Registro)
