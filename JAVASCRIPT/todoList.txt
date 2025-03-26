@@ -31,9 +31,13 @@
 - Crear productos
 - Dtalle del producto
 - - Actualizar
+- Eliminar productos
+- implen. toastifyJ
+
+- Tipos de Almacenamiento
+- LocalStorage y Cookies
 ---------------------------------
 
 
-
-- Eliminar productos
+- Flow Carrito con LocalStorage 
 - Authe. User (Login / Registro)

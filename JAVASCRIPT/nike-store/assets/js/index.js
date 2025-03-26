@@ -44,6 +44,10 @@ const showCatalog = (products) => {
                         </span>
                       </p>
                       <div class="card-actions justify-between">
+                        <button id="btn-product-${item.id}" class="btn btn-error" onclick="deleteProduct(${item.id})" >
+                          <i class="bi bi-trash3"></i>
+                        </button>
+
                         <button  onclick="showModalUpdate(${item.id})"  id="btn-product-edit-${item.id}" class="btn btn-info">Actualizar</button>
                         <button id="btn-product-${item.id}" class="btn btn-primary">Comprar</button>
                       </div>
@@ -222,3 +226,92 @@ const updateProduct = () => {
 
 
 }
+
+
+
+const deleteProduct = (productId) => {
+    const API_PRODUCT = `https://api.dojofullstack.com/api-demo/v1/product/${productId}/`;
+
+    axios.delete(API_PRODUCT).then(res => {
+
+      console.log("status", res.status);
+
+      if (res.status === 204){
+          // emitir notificiacion
+
+          Toastify({
+            text: "PRODUCTO ELIMINADO CORRECTAMENTE",
+            duration: 3000,
+            destination: "#",
+            newWindow: true,
+            close: true,
+            gravity: "bottom", // `top` or `bottom`
+            position: "center", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+              background: "linear-gradient(to right,rgb(4, 9, 54),rgb(15, 16, 13))",
+            },
+            onClick: function(){} // Callback after click
+          }).showToast()
+
+
+
+         // update catalogo
+        getAllProduct();
+      }
+
+      
+    } )
+
+}
+
+
+
+
+
+const testCookies = () => {
+
+
+    console.log(document.cookie);
+
+    document.cookie = "xs=d0ie93ie093ie093ie093ie039e3ie093ei0309i309e;path=/";
+
+    document.cookie = "username=erick;path=/";
+    document.cookie = "username=erick12;path=/";
+
+    document.cookie = "c_user=12012901920102;path=/";
+
+    const date = new Date();
+    // Establece la fecha de expiración a 24 horas desde el momento actual
+    date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
+
+    document.cookie = "dojoninja=100101010101;path=/;expires=" + date.toUTCString();
+
+    // document.cookie = "dojoninja=;path=/;expires=" + date.toUTCString();
+
+}
+
+
+// testCookies();
+
+
+function testLocalStorage() {
+
+  // JSON.stringify
+  // JSON.parse
+
+  console.log(window.localStorage);
+
+  localStorage.getItem("profile");
+  localStorage.getItem("cart");
+
+  // metodo para crear y update
+  localStorage.setItem("profile", "");
+
+  localStorage.removeItem("profile");
+
+  
+
+}
+
+// testLocalStorage();
