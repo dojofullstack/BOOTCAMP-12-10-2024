@@ -38,6 +38,6 @@
 - LocalStorage y Cookies
 ---------------------------------
 
-
-- Flow Carrito con LocalStorage 
 - Authe. User (Login / Registro)
+- Registro
+- Flow Carrito con LocalStorage 
