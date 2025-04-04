@@ -49,7 +49,9 @@ const showCatalog = (products) => {
                         </button>
 
                         <button  onclick="showModalUpdate(${item.id})"  id="btn-product-edit-${item.id}" class="btn btn-info">Actualizar</button>
-                        <button id="btn-product-${item.id}" class="btn btn-primary">Comprar</button>
+                        <button id="btn-product-${item.id}" class="btn btn-primary"  onclick="addProductCart(${item.id})" >
+                        Agregar al carrito
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -173,7 +175,7 @@ const getProduct = async (productId) => {
 
   STORE_DATA.productDetail = response.data;
 
-  // return response.data;
+  return response.data;
   
   // axios.get(API_PRODUCT).then( (response) => {
 
@@ -448,7 +450,19 @@ const loadProfile = () => {
             "Authorization": `Bearer ${access}`
           }
         }).then( (response) => {
+
           console.log(response.data);
+          const userData = {
+            isLogin: true,
+            user: response.data
+          }
+
+          localStorage.setItem("profile", JSON.stringify(userData));
+
+          // mostrar profile (frontenf)
+          setProfile();
+          
+
         } ).catch( (error) => {
           console.log(error);
           refreshToken();
@@ -485,3 +499,252 @@ const refreshToken = () => {
     })
 
 }
+
+
+
+
+
+const setProfile = () => {
+
+  const profile = JSON.parse(localStorage.getItem("profile"));
+
+  if (profile){
+    document.querySelector("#username").innerHTML = profile.user.username;
+    document.querySelector("#img-profile").src = `https://avatar.iran.liara.run/username?username=${profile.user.username}`
+  }
+
+}
+
+
+
+
+const logout = () => {
+
+  localStorage.removeItem("profile");
+  localStorage.removeItem("access");
+  localStorage.removeItem("refresh");
+
+  window.location.href = "/nike-store/login.html";
+
+}
+
+
+
+const register = () => {
+
+
+  const username = document.querySelector("#form-username").value;
+  const email = document.querySelector("#form-email").value;
+  const password = document.querySelector("#form-password").value;
+  const passwordConfirm = document.querySelector("#form-password-confirm").value;
+
+  if (password !== passwordConfirm){
+    Toastify({
+      text: "LAS CONTRASEÑAS NO COINCIDEN",
+      duration: 3000,
+      destination: "#",
+      newWindow: true,
+      close: true,
+      gravity: "bottom", // `top` or `bottom`
+      position: "center", // `left`, `center` or `right`
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      style: {
+        background: "linear-gradient(to right,rgb(236, 59, 15),rgb(243, 81, 0))",
+      },
+      onClick: function(){} // Callback after click
+    }).showToast()
+    return;
+  }
+
+
+  const payload = {
+    "username": username,
+    "email": email,
+    "password": password
+  }
+
+  axios.post("https://api.dojofullstack.com/api/auth/users/", payload).then( (response) => {
+
+    if(response.status === 201){
+      Toastify({
+        text: "usuario registrado correctamente",
+        duration: 3000,
+        destination: "#",
+        newWindow: true,
+        close: true,
+        gravity: "bottom", // `top` or `bottom`
+        position: "center", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "linear-gradient(to right,rgb(8, 190, 72),rgb(120, 168, 26))",
+        },
+        onClick: function(){} // Callback after click
+      }).showToast()
+
+
+      setTimeout(() => {
+        window.location.href = "/nike-store/login.html";
+      }, 3000);
+
+    }
+    
+    })
+
+}
+
+
+
+// oauth2 facebook & google
+function onSignIn(response) {
+  // Maneja la respuesta de la autenticación
+  console.log("User successfully signed in!");
+  console.log(response);
+
+  // Obtener información del perfil
+  const credential = response.credential;
+  const userInfo = parseJwt(credential);
+  console.log(userInfo);
+
+  localStorage.setItem("profile", JSON.stringify(userInfo) );
+
+
+
+}
+
+// Función para decodificar el token JWT
+function parseJwt (token) {
+  var base64Url = token.split('.')[1];
+  var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+  }).join(''));
+
+  return JSON.parse(jsonPayload);
+}
+
+
+
+function signOutGoogle() {
+  // Restablece cualquier estado o sesión de tu aplicación
+  console.log("User signed out from the application.");
+
+  // Si deseas cerrar la sesión de Google específicamente en el navegador:
+  const auth2 = gapi.auth2.getAuthInstance();
+  auth2.signOut().then(function () {
+      console.log('User signed out from Google.');
+  });
+}
+
+
+
+// Inicializar el SDK de Facebook
+window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '01920192091029109209102910920192091092', // Reemplaza con tu App ID
+    cookie     : true,  // Habilita las cookies para permitir que el servidor acceda a la sesión
+    xfbml      : true,  // Analiza los plugins sociales en la página
+    version    : 'v17.0' // Usa la versión más reciente de la API de Facebook
+  });
+};
+
+// Función para manejar el inicio de sesión con Facebook
+function facebookLogin() {
+  FB.login(function(response) {
+      if (response.authResponse) {
+          console.log('Bienvenido! Recuperando tu información...');
+          FB.api('/me', {fields: 'name, email'}, function(response) {
+              console.log('Usuario autenticado:', response);
+          });
+      } else {
+          console.log('El usuario canceló el inicio de sesión o no autorizó completamente.');
+      }
+  }, {scope: 'email'});
+}
+
+// oauth2 facebook & google
+
+
+
+
+const addProductCart = async (productId) => {
+
+    console.log("agregando al carrito", productId);
+
+    const productInfo = await getProduct(productId);
+
+    // console.log(productInfo);
+
+    const cartItem = {
+        id: productInfo.id,
+        name: productInfo.name,
+        price: productInfo.price,
+        image_url: productInfo.image_url,
+        quantity: 1
+    }
+
+    const cart =  JSON.parse(localStorage.getItem("cart")) || [];
+
+    // console.log(cart);
+
+
+    const cartUpdated = [cartItem, ...cart];
+
+    console.log(cartUpdated);
+
+    localStorage.setItem("cart", JSON.stringify(cartUpdated) );
+
+    // mostrar notificacion
+    Toastify({
+        text: "PRODUCTO AGREGADO AL CARRITO",
+        duration: 3000,
+        destination: "#",
+        newWindow: true,
+        close: true,
+        gravity: "bottom", // `top` or `bottom`
+        position: "center", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "linear-gradient(to right,rgb(8, 190, 72),rgb(120, 168, 26))",
+        },
+        onClick: function(){} // Callback after click
+      }).showToast();
+
+
+      refreshCart();
+    
+    
+}
+
+
+
+
+const refreshCart = () => {
+
+  const cart =  JSON.parse(localStorage.getItem("cart")) || [];
+
+
+  let subTotal = 0;
+  const itemsTotal = cart.length;
+
+
+  cart?.forEach(element => {
+    // console.log(  parseFloat(element.price) *  parseInt(element.quantity));
+    subTotal += parseFloat(element.price) *  parseInt(element.quantity);
+    
+  });
+
+
+  // console.log(subTotal);
+  // console.log(itemsTotal);
+  
+
+    document.querySelector("#total-items").innerHTML = `${itemsTotal} productos`;
+    document.querySelector("#subtotal-price").innerHTML = `$${subTotal.toFixed(2)} USD`;
+    document.querySelector("#total-items-float").innerHTML = itemsTotal;
+  
+
+
+}
+
+
+

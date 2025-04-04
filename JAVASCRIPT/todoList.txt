@@ -36,8 +36,20 @@
 
 - Tipos de Almacenamiento
 - LocalStorage y Cookies
----------------------------------
-
 - Authe. User (Login / Registro)
+- Logout
 - Registro
+
 - Flow Carrito con LocalStorage 
+- checkout
+
+---------------------------------
+-----------------------------------------
+
+Javascript Asincronico
+Obj Promises (then & cacth)
+Async & wait
+-------------------------------------------------
+Entorno JS (React JS)
+
+

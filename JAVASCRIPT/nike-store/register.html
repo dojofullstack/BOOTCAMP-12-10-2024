@@ -12,21 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    
-    <style>
-      #facebook-btn {
-        margin-top: 20px;
-        background-color: #3b5998;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-      #facebook-btn:hover {
-        background-color: #2d4373;
-      }
-    </style>
+
 </head>
 <body data-theme="synthwave">
 
@@ -49,7 +35,7 @@
         <div class="hero bg-base-200 min-h-screen">
             <div class="hero-content flex-col lg:flex-row-reverse">
               <div class="text-center lg:text-left">
-                <h1 class="text-5xl font-bold">Iniciar Sesion</h1>
+                <h1 class="text-5xl font-bold">Registrarse</h1>
                 <p class="py-6">
                   Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
           
@@ -58,36 +44,20 @@
               <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                 <div class="card-body">
                   <fieldset class="fieldset">
+                    <label class="fieldset-label">username</label>
+                    <input id="form-username" type="text" class="input" placeholder="Nombre de usuario?" />
+
                     <label class="fieldset-label">Email</label>
                     <input id="form-email" type="email" class="input" placeholder="Email" />
                     <label class="fieldset-label">Password</label>
                     <input id="form-password" type="password" class="input" placeholder="Password" />
+
+                    <label class="fieldset-label">Confirmar Password</label>
+                    <input id="form-password-confirm" type="password" class="input" placeholder="Password" />
                     <div><a class="link link-hover">Forgot password?</a></div>
-                    <button onclick="loginJWT()"  class="btn btn-neutral mt-4">Login</button>
+                    <button onclick="register()"  class="btn btn-neutral mt-4">Registrar</button>
                   </fieldset>
                 </div>
-
-
-<!-- Elemento donde se dibujará el botón de Google -->
-<div id="g_id_onload"
-data-client_id="01010101012091029019209109201.apps.googleusercontent.com"
-data-callback="onSignIn">
-</div>
-
-<div class="g_id_signin" data-type="standard"></div>
-
-
-
-
-   <!-- Botón de login de Facebook -->
-   <button id="facebook-btn" onclick="facebookLogin()">Iniciar sesión con Facebook</button>
-
-   <!-- Incluir el SDK de Facebook -->
-   <div id="fb-root"></div>
-
-
-
-
               </div>
             </div>
           </div>
@@ -139,11 +109,6 @@ data-callback="onSignIn">
 
 
     </footer>
-
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <script async defer crossorigin="anonymous"
-    src="https://connect.facebook.net/en_US/sdk.js"></script>
-
 
 
 
