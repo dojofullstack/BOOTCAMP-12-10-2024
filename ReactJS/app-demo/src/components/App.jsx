@@ -1,6 +1,9 @@
 
 import { useEffect, useState } from "react"
+//import "bootstrap-icons/font/bootstrap-icons.css";
 
+import { FaStar } from "react-icons/fa";
+import { IoMenu } from "react-icons/io5";
 
 
 // renderizar componente con un content children
@@ -34,7 +37,7 @@ export const App = ({props}) => {
     // console.log("props", props);
     // console.log(usuario);
 
-    console.log(comentario);
+    // console.log(comentario);
 
 
 
@@ -60,6 +63,14 @@ export const App = ({props}) => {
         <>
            
            <main style={{backgroundColor: "purple", height: "auto"}}>
+           {/* <i className="bi bi-0-circle-fill"></i>
+           <i className="bi bi-airplane-fill"></i> */}
+
+<FaStar /><FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
+<IoMenu className="text-2xl" />
+<IoMenu />
+<IoMenu />
+<IoMenu />
 
                 <div >
 
@@ -85,7 +96,7 @@ export const App = ({props}) => {
                 {/* <QuotesSimilares props={props} /> */}
 
 
-                <button onClick={getAPIQuotes}>
+                <button className="btn btn-primary text-lg"  onClick={getAPIQuotes}>
                     Refescar Frases
                 </button>
 
