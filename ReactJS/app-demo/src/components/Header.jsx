@@ -1,12 +1,24 @@
+import { useContext } from "react";
+import { useNavigate } from "react-router"
+import themeContext from "../themeContext";
 
 
 export const Header = () => {
+
+    const navigate = useNavigate();
+
+
+      const { theme, changeTheme, changeThemeSecondary } = useContext(themeContext);
+    
+
     return (
         <>
-            <header>
-            <div className="navbar bg-base-100 shadow-sm">
-  <div className="flex-1">
-    <a className="btn btn-ghost text-xl">daisyUI</a>
+            <header style={{backgroundColor: theme.primary}} className="sticky top-0 z-50">
+            <div className="navbar shadow-sm">
+  <div className="flex-1" onClick={() => navigate("/store")} >
+    <a className="btn btn-ghost text-xl">
+      <img src="https://logodownload.org/wp-content/uploads/2018/10/mercado-libre-logo.png" className="w-[150px]"/>
+    </a>
   </div>
   <div className="flex-none">
     <div className="dropdown dropdown-end">
