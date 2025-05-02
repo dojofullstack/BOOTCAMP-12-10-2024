@@ -7,6 +7,7 @@ import { useParams, useSearchParams } from "react-router";
 import axios from "axios";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
+import { useStore } from "../useStore";
 
 const product = {
   name: "Basic Tee 6-Pack",
@@ -77,6 +78,14 @@ export default function ProductView() {
   const [searchParams] =  useSearchParams();
 //   console.log(searchParams.get("color"));
 //   console.log(searchParams.get("memory"));
+
+  const cartStore = useStore( (state) => state.cartStore );
+  const addCartStore = useStore( (state) => state.addCartStore );
+
+  
+
+  console.log("Cart Store", cartStore);
+  // console.log("Add Cart Store", addCartStore);
   
 
   console.log("ProductID:", id);
@@ -209,7 +218,7 @@ export default function ProductView() {
                 </div>
               </div>
 
-              <form className="mt-10">
+              <form className="mt-10" onSubmit={(e) => e.preventDefault()} >
                 {/* Colors */}
                 <div>
                   <h3 className="text-sm font-medium text-gray-900">Color</h3>
@@ -307,10 +316,11 @@ export default function ProductView() {
                 </div>
 
                 <button
+                  onClick={() => addCartStore(productDetail) }
                   type="submit"
                   className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-hidden"
                 >
-                  Add to bag
+                  Agregar al carrito
                 </button>
               </form>
             </div>
