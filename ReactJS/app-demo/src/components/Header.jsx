@@ -14,7 +14,13 @@ export const Header = () => {
     const [subTotalCart, setSubTotalCart ]  = useState(0);
 
 
-    console.log(cartStore, subTotalCart);
+    const isLogin =  useStore((state) => state.isLogin);
+    const profile =  useStore((state) => state.profile);
+    const logout =  useStore((state) => state.logout);
+
+
+
+    // console.log(cartStore, subTotalCart);
 
 
     useEffect(  ()  => {
@@ -92,6 +98,8 @@ export const Header = () => {
                 </div>
               </div>
             </div>
+
+           {isLogin && profile &&
             <div className="dropdown dropdown-end">
               <div
                 tabIndex={0}
@@ -101,7 +109,7 @@ export const Header = () => {
                 <div className="w-10 rounded-full">
                   <img
                     alt="Tailwind CSS Navbar component"
-                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                    src={"https://avatar.iran.liara.run/username?username=" + profile?.username}
                   />
                 </div>
               </div>
@@ -112,17 +120,19 @@ export const Header = () => {
                 <li>
                   <a className="justify-between">
                     Profile
-                    <span className="badge">New</span>
+                    <span className="badge">{profile?.username}</span>
                   </a>
                 </li>
                 <li>
                   <a>Settings</a>
                 </li>
-                <li>
-                  <a>Logout</a>
+                <li onClick={logout}>
+                  <a>Cerrar sesion</a>
                 </li>
               </ul>
             </div>
+          }
+
           </div>
         </div>
       </header>

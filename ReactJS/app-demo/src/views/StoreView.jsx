@@ -2,15 +2,20 @@ import { useContext, useEffect, useState } from "react";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router";
+import { useNavigate, useParams, useSearchParams } from "react-router";
 import themeContext from "../themeContext";
+import { useStore } from "../useStore";
 
 export const StoreView = () => {
   const [catalogo, setCatalogo] = useState([]);
 
   const { theme, changeTheme, changeThemeSecondary } = useContext(themeContext);
 
-  console.log(theme);
+  const isLogin =  useStore((state) => state.isLogin);
+  const setProfile =  useStore((state) => state.setProfile);
+  const loadProfile =  useStore((state) => state.loadProfile);
+
+  console.log("isLogin", isLogin);
 
   const navigate = useNavigate();
 
@@ -25,6 +30,19 @@ export const StoreView = () => {
   };
 
   useEffect(listProduct, []);
+
+
+  useEffect(() => {
+    loadProfile();
+  }, isLogin)
+
+
+  // useEffect(() => {
+  //   if (!isLogin){
+  //     navigate("/login");
+  //   }
+
+  // }, isLogin)
 
   return (
     <>
