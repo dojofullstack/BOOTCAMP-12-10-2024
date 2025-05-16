@@ -15,6 +15,12 @@ export const StoreView = () => {
   const setProfile =  useStore((state) => state.setProfile);
   const loadProfile =  useStore((state) => state.loadProfile);
 
+  const [titleProduct, setTitleProduct] = useState("");
+  const [priceProduct, setPriceProduct] = useState("");
+  const [descriptionProduct, setDescriptionProduct] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [IDProduct, setIDProduct] = useState(null);
+
   console.log("isLogin", isLogin);
 
   const navigate = useNavigate();
@@ -29,13 +35,83 @@ export const StoreView = () => {
       });
   };
 
-  useEffect(listProduct, []);
+  // Nueva función para obtener un producto por ID
+  const getProduct = (id) => {
+    axios
+      .get(`https://api.dojofullstack.com/api-demo/v1/product/${id}`)
+      .then((res) => {
+        const prod = res.data;
+        setTitleProduct(prod.name);
+        setPriceProduct(prod.price);
+        setImageUrl(prod.image_url);
+        setDescriptionProduct(prod.description);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
+
+    // Nueva función para eliminar un producto por ID
+    const deleteProduct = (id) => {
+      axios
+        .delete(`https://api.dojofullstack.com/api-demo/v1/product/${id}`)
+        .then((res) => {
+          console.log(res.data);
+          listProduct();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+
+  const createProduct = () => {
+    const api = "https://api.dojofullstack.com/api-demo/v1/product/";
+    const payload = {
+      name: titleProduct,
+      price: priceProduct,
+      image_url: imageUrl,
+      description: descriptionProduct
+    };
+    axios
+      .post(api, payload)
+      .then((res) => {
+        console.log(res.data);
+        listProduct();
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    }
+
+
+    const updateProduct = () => {
+      
+      const api = `https://api.dojofullstack.com/api-demo/v1/product/${IDProduct}/`;
+      const payload = {
+        name: titleProduct,
+        price: priceProduct,
+        image_url: imageUrl,
+        description: descriptionProduct
+      };
+
+      axios
+        .put(api, payload)
+        .then((res) => {
+          console.log(res.data);
+          listProduct();
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+      }
+  
+
+  useEffect(listProduct, []);
 
   useEffect(() => {
     loadProfile();
   }, isLogin)
-
 
   // useEffect(() => {
   //   if (!isLogin){
@@ -76,7 +152,6 @@ export const StoreView = () => {
                 </button>
               </li>
 
-
               <li>
                 <button
                   className="btn btn-primary my-2"
@@ -91,7 +166,9 @@ export const StoreView = () => {
           <button onClick={listProduct} className="btn btn-secondary">
             Refrescar Catalogo
           </button>
-          <button className="btn btn-accent">Crear Producto</button>
+          <button
+            onClick={()=>document.getElementById('my_modal_product').showModal()}
+          className="btn btn-accent">Crear Producto</button>
         </div>
 
         <div
@@ -111,7 +188,23 @@ export const StoreView = () => {
                   <h2 className="card-title">{item.name}</h2>
                   <p>Precio: {item.price} USD</p>
                   <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Comprar</button>
+                  <button
+                    onClick={() => deleteProduct(item.id)}
+                    className="btn btn-error text-white">
+                      Elimninar
+                  </button>
+
+
+                   <button 
+                      onClick={() => {
+                        setIDProduct(item.id);
+                        getProduct(item.id);
+                        document.getElementById('my_modal_update').showModal();
+                      }}
+                      className="btn btn-info">
+                        Editar
+                    </button>
+                   <button className="btn btn-primary">Comprar</button>
                   </div>
                 </div>
               </div>
@@ -119,6 +212,55 @@ export const StoreView = () => {
           ))}
         </div>
       </div>
+
+{/* Open the modal using document.getElementById('ID').showModal() method */}
+{/* <button className="btn" onClick={()=>document.getElementById('my_modal_1').showModal()}>open modal</button> */}
+
+<dialog id="my_modal_product" className="modal">
+  <div className="modal-box">
+    <h3 className="font-bold text-lg">Crear Producto</h3>
+
+      <div className="flex flex-col gap-3 items-center my-3">
+
+      <input  onChange={(e) => setTitleProduct(e.target.value)} value={titleProduct} type="text" placeholder="Titulo del Producto" className="input input-secondary" />
+      <input  onChange={(e) => setPriceProduct(e.target.value)} value={priceProduct} type="number" placeholder="Precio del Producto" className="input input-secondary" />
+      <input  onChange={(e) => setImageUrl(e.target.value)} value={imageUrl} type="url" placeholder="Imagen del Producto" className="input input-secondary" />
+      <textarea  onChange={(e) => setDescriptionProduct(e.target.value)} value={descriptionProduct} type="text" placeholder="Descripcion del producto..." className="textarea textarea-secondary"></textarea>
+        
+      <button onClick={createProduct} className="btn btn-secondary">Crear Producto</button>
+      </div>
+
+    <div className="modal-action">
+      <form method="dialog">
+        {/* if there is a button in form, it will close the modal */}
+        <button className="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="my_modal_update" className="modal">
+  <div className="modal-box">
+    <h3 className="font-bold text-lg">Actualizar Producto</h3>
+
+      <div className="flex flex-col gap-3 items-center my-3">
+
+      <input  onChange={(e) => setTitleProduct(e.target.value)} value={titleProduct} type="text" placeholder="Titulo del Producto" className="input input-secondary" />
+      <input  onChange={(e) => setPriceProduct(e.target.value)} value={priceProduct} type="number" placeholder="Precio del Producto" className="input input-secondary" />
+      <input  onChange={(e) => setImageUrl(e.target.value)} value={imageUrl} type="url" placeholder="Imagen del Producto" className="input input-secondary" />
+      <textarea  onChange={(e) => setDescriptionProduct(e.target.value)} value={descriptionProduct} type="text" placeholder="Descripcion del producto..." className="textarea textarea-secondary"></textarea>
+        
+      <button onClick={updateProduct} className="btn btn-secondary">Actualizar Producto</button>
+      </div>
+
+    <div className="modal-action">
+      <form method="dialog">
+        {/* if there is a button in form, it will close the modal */}
+        <button className="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
 
       <Footer />
     </>

@@ -91,7 +91,7 @@ export const Header = () => {
                   <span className="text-lg font-bold">{cartStore.length} Productos</span>
                   <span className="text-info">Subtotal: $ {subTotalCart} USD </span>
                   <div className="card-actions">
-                    <button className="btn btn-primary btn-block">
+                    <button className="btn btn-primary btn-block" onClick={() => navigate("/store/checkout")}>
                       Completar compra
                     </button>
                   </div>

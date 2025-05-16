@@ -8,6 +8,7 @@ import { Page404 } from "./views/Page404";
 import { PoblacionDiscover } from "./views/PoblacionDiscover";
 import RegistroView from "./views/Auth/RegistroView";
 import LoginView from "./views/Auth/LoginView";
+import { CheckoutPage } from "./views/CheckoutPage";
 
 const Rutas = () => {
   const [themeStore, setThemeStore] = useState(theme);
@@ -42,6 +43,7 @@ const Rutas = () => {
           <Route path="/blog" element={<HomeView />} />
           <Route path="/store" element={<StoreView />} />
           <Route path="/store/product/:id" element={<ProductView />} />
+          <Route path="/store/checkout" element={<CheckoutPage />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
       </BrowserRouter>
